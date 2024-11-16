@@ -1,0 +1,22 @@
+int twoStacks(int maxSum, int a_count, int* a, int b_count, int* b){
+             int A[a_count + 1];
+            int B[b_count + 1];
+            A[0] = 0; 
+            for (int i = 0; i < a_count; i++) {
+                    A[i + 1] = A[i] + a[i];
+ } 
+            B[0] = 0; 
+             for (int i = 0; i < b_count; i++) {
+                  B[i + 1] = B[i] + b[i]; 
+} 
+             int maxEle = 0; 
+             int j = b_count; 
+             for (int i = 0; i <= a_count; i++) {
+                   if (A[i] > maxSum) break; 
+                   while (j > 0 && (A[i] + B[j] > maxSum)) {
+                             j--;
+ } 
+              maxEle = (i + j > maxEle) ? (i + j) : maxEle; 
+}
+             return maxEle; 
+}
